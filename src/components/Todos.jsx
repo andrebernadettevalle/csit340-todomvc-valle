@@ -64,7 +64,7 @@ function Todos() {
             <span className="rotate-90">&gt;</span>
           </label>
 
-          <ul className="divide-y divide-[#e6e6e6]">
+          <ul className="list-none divide-y divide-[#e6e6e6]">
             {todos.map((todo) => (
               <li
                 key={todo.id}
