@@ -35,6 +35,12 @@ function Todos() {
     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
+  const clearCompleted = () => {
+    setTodos(todos.filter((todo) => !todo.completed))
+  }
+
+  const activeCount = todos.filter((todo) => !todo.completed).length
+
   return (
     <section className="mx-auto max-w-[558px]">
       <h1 className="text-center text-[88px] font-extralight text-[#b83f45]">
@@ -90,6 +96,32 @@ function Todos() {
             ))}
           </ul>
         </main>
+
+        {todos.length > 0 && (
+          <footer className="grid h-10 grid-cols-3 items-center border-t border-[#e6e6e6] px-4 text-sm text-[#777]">
+            <span>
+              <strong className="font-light">{activeCount}</strong>{' '}
+              {activeCount === 1 ? 'item' : 'items'} left
+            </span>
+            <ul className="flex justify-center gap-1">
+              <li>
+                <button
+                  type="button"
+                  className="cursor-pointer rounded-[3px] border border-[#b83f45]/20 px-2 py-1"
+                >
+                  All
+                </button>
+              </li>
+            </ul>
+            <button
+              type="button"
+              onClick={clearCompleted}
+              className="cursor-pointer justify-self-end hover:underline"
+            >
+              Clear completed
+            </button>
+          </footer>
+        )}
       </div>
     </section>
   )
